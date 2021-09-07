@@ -4,6 +4,9 @@ import Welcome from "./pages/Welcome";
 import Product from "./pages/Products";
 import MainHeader from "./components/MainHeader";
 import ProductDetail from "./pages/ProductDetail";
+import AllQuotes from "./pages/AllQuotes";
+import QuoteDetail from "./pages/QuoteDetail";
+import NewQuote from "./pages/NewQuote";
 
 function App() {
   return (
@@ -12,7 +15,7 @@ function App() {
       <main>
         <Switch>
           <Route path="/" exact>
-            <Redirect to="/welcome" />
+            <Redirect to="/quotes" />
           </Route>
           <Route path="/welcome">
             <Welcome />
@@ -25,11 +28,15 @@ function App() {
           </Route>
 
           {/* for quotoe paths */}
-          <Route path="/quotes">
-            <h1>Quotes</h1>
+          <Route path="/quotes" exact>
+            <AllQuotes />
           </Route>
-          <Route path="/quote/:quoteId "></Route>
-          <Route path="/new-quote"></Route>
+          <Route path="/quotes/:quoteId">
+            <QuoteDetail />
+          </Route>
+          <Route path="/new-quote">
+            <NewQuote />
+          </Route>
         </Switch>
       </main>
     </>
