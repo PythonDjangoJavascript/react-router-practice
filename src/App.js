@@ -2,17 +2,18 @@ import { Route, Switch, Redirect } from "react-router";
 
 import Welcome from "./pages/Welcome";
 import Product from "./pages/Products";
-import MainHeader from "./components/MainHeader";
+// import MainHeader from "./components/MainHeader";
 import ProductDetail from "./pages/ProductDetail";
 import AllQuotes from "./pages/AllQuotes";
 import QuoteDetail from "./pages/QuoteDetail";
 import NewQuote from "./pages/NewQuote";
+import Layout from "./components/Layouts/Layout";
 
 function App() {
   return (
     <>
-      <MainHeader />
-      <main>
+      {/* <MainHeader /> */}
+      <Layout>
         <Switch>
           <Route path="/" exact>
             <Redirect to="/quotes" />
@@ -38,7 +39,7 @@ function App() {
             <NewQuote />
           </Route>
         </Switch>
-      </main>
+      </Layout>
     </>
   );
 }
