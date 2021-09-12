@@ -1,5 +1,12 @@
+import QuoteForm from "../components/quotes/QuoteForm"
+
 const NewQuote = () => {
-    return <h1>New Quote</h1>
+
+    const onSubmit = (newQuote) => {
+        console.log(newQuote)
+    }
+
+    return <QuoteForm onSubmit={onSubmit} />
 }
 
 export default NewQuote
