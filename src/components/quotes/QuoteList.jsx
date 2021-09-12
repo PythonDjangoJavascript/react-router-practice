@@ -9,6 +9,7 @@ const QuoteList = (props) => {
                     return (
                         <QuoteItem
                             key={quote.id}
+                            id={quote.id}
                             author={quote.author}
                             text={quote.text}
                         />
