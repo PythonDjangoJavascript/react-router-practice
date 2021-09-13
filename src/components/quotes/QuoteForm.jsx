@@ -3,6 +3,7 @@ import { Prompt } from 'react-router-dom'
 
 import classes from "./QuoteForm.module.css"
 import Card from '../UI/Card'
+import LoadingSpinner from '../UI/LoadingSpinner'
 
 const QuoteForm = (props) => {
     const authorInputRef = useRef()
@@ -37,6 +38,11 @@ const QuoteForm = (props) => {
                     className={classes.form}
                     onSubmit={onSubmintHandler}
                 >
+                    {!props.isLoading && (
+                        <div className={classes.loading}>
+                            <LoadingSpinner />
+                        </div>
+                    )}
                     <div className={classes.control}>
                         <label htmlFor="author">Author</label>
                         <input type="text" id="author" ref={authorInputRef} />
