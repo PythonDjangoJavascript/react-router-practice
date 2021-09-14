@@ -24,6 +24,25 @@ export async function getAllQuotes() {
     return transformedQuotes
 }
 
+export async function getQuoteDetail(quoteId) {
+    // api function to get the detail of a quote
+
+    const response = await fetch(`${FIREBASE_DOMAIN}/quotes/${quoteId}.json`)
+    const data = await response.json()
+
+    if (!response.ok) {
+        // when fetching failed
+        throw new Error(data.message || "Could not fetch quote detail")
+    }
+
+    const loadedQuote = {
+        id: quoteId,
+        ...data
+    }
+
+    return loadedQuote
+}
+
 export async function addQuote(quoteData) {
     // api fucntion to send and add quote data to firebase
 
