@@ -39,6 +39,9 @@ function useHttp(sendRequest, startWithPending = false) {
     })
 
     const executeRequest = useCallback(
+        // using callBack to avaoid JS reference value problem
+        // useCall back will save this fuction and reuse that saved fucntion
+        // until its dependencis change
         async function (requestData) {
             // this action will set peding status
             dispatch({ type: "SEND" })
