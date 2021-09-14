@@ -42,6 +42,7 @@ function useHttp(sendRequest, startWithPending = false) {
         // using callBack to avaoid JS reference value problem
         // useCall back will save this fuction and reuse that saved fucntion
         // until its dependencis change
+        // this is necessary as we are going to use it in useEffect dependencies
         async function (requestData) {
             // this action will set peding status
             dispatch({ type: "SEND" })
