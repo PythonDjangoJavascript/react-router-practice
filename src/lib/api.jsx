@@ -64,3 +64,24 @@ export async function addQuote(quoteData) {
     // return is must as we expect return inside our custom useHttp hook
     return null
 }
+
+export async function addComment(commentData) {
+    // Add send comment to Firebase to save
+
+    const response = await fetch(`${FIREBASE_DOMAIN}/comments/${commentData.quoteId}.json`, {
+        method: "POST",
+        body: JSON.stringify(commentData.comment),
+        headers: {
+            "Content-type": "application/json",
+        }
+    })
+    const data = await response.json()
+
+    if (!response.ok) {
+        throw new Error(data.message || "Could not add comment, please try again")
+    }
+
+    return {
+        commentId: data.name,
+    }
+}
