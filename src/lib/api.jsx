@@ -85,3 +85,27 @@ export async function addComment(commentData) {
         commentId: data.name,
     }
 }
+
+export async function getAllComment(quoteId) {
+    // load all comments form firbase for given id
+
+    const response = await fetch(`${FIREBASE_DOMAIN}/comments/${quoteId}.json`)
+    const data = await response.json()
+
+    if (!response.ok) {
+        throw new Error(data.message || "Failed to load comments")
+    }
+
+    const transformedComments = []
+
+    for (const key in data) {
+        const commentObj = {
+            id: key,
+            ...data[key]
+        }
+
+        transformedComments.push(commentObj)
+    }
+
+    return transformedComments
+}
