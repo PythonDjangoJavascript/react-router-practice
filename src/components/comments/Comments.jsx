@@ -6,6 +6,7 @@ import NewCommentForm from "./NewCommentForm"
 import useHttp from "../../hooks/use-http"
 import { getAllComment } from "../../lib/api"
 import LoadingSpinner from "../UI/LoadingSpinner"
+import CommentsList from "./CommentsList"
 
 
 const Comments = () => {
@@ -34,7 +35,7 @@ const Comments = () => {
     }
 
     if (status === "completed" && loadedComments.length > 0) {
-        comments = <div>{loadedComments.map(comment => <p>{comment.text}</p>)}</div>
+        comments = <CommentsList comments={loadedComments} />
     }
 
     if (status === "completed" && (!loadedComments || loadedComments.length === 0)) {
